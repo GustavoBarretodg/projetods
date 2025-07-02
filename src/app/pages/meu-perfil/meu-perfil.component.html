@@ -1,0 +1,59 @@
+<app-navegador
+  [title2]="'Olá Fulano'"
+  [primaryBtnText]="'Olá FULANO'"
+  [secondaryBtnText]="'Meu perfil'"
+  [disablePrimaryBtn]="false"
+></app-navegador>
+
+<div class="card">
+  <div class="card-header">
+    <h2><i class="material-icons">person</i> Meus Dados</h2>
+    <p>Veja seus dados de acesso na plataforma</p>
+  </div>
+
+  <div class="card-body">
+    <div class="form-group">
+      <label>Nome:</label>
+      <span>{{ usuario.nome }}</span>
+    </div>
+
+    <div class="form-group two-columns">
+      <div>
+        <label>Usuário (e-mail):</label>
+        <div class="input-with-icon">
+          <i class="material-icons">email</i>
+          <input type="email" [value]="usuario.email" disabled />
+        </div>
+      </div>
+      <div>
+        <label>Senha:</label>
+        <div class="input-with-action">
+          <i class="material-icons">lock</i>
+          <input type="password" value="********" disabled />
+          <a (click)="alterarSenha()">Alterar senha</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>CPF:</label>
+      <div class="input-with-icon">
+        <i class="material-icons">folder</i>
+        <input type="text" [value]="usuario.cpf" disabled />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Telefone:</label>
+      <div class="input-with-icon">
+        <i class="material-icons">phone</i>
+        <input type="text" [value]="usuario.telefone" disabled />
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-black" (click)="salvar()">Salvar</button>
+    <button class="btn btn-orange" (click)="desativarConta()">Quero desativar minha conta</button>
+  </div>
+</div>

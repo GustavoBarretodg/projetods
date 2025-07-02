@@ -1,0 +1,22 @@
+<app-navegador
+  [title2]="'Painel de Informações'"
+  [primaryBtnText]="'Olá ' + primeiroResponsavel"
+  [secondaryBtnText]="'Meu perfil'"
+  [disablePrimaryBtn]="false"
+/>
+
+<!-- Lista de cards, somente se houver contas -->
+<div class="cards-wrapper" *ngIf="contas.length > 0">
+  <app-cards
+    *ngFor="let conta of contas"
+    [tipo]="'evento'"
+    [titulo]="'Conta de ' + conta.moradorResponsavel"
+    [horario]="conta.vencimento"
+    [local]="'R$ ' + conta.valor + ' - ' + conta.situacaoConta">
+  </app-cards>
+</div>
+
+<!-- Mensagem caso não tenha nenhuma conta -->
+<div class="sem-contas" *ngIf="contas.length === 0">
+  Nenhuma conta cadastrada ainda.
+</div>

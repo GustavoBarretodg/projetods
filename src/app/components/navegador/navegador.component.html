@@ -1,0 +1,30 @@
+<nav class="navegador-container">
+  <div class="logo">
+    <span>{{ title }}</span>
+  </div>
+
+  <div class="perfil" *ngIf="title2">
+    <span>{{ title2 }}</span>
+  </div>
+
+  <div class="btn-wrapper" *ngIf="!title2">
+    <button 
+      class="btn-primary" 
+      (click)="submitPrimary()"
+      [disabled]="disablePrimaryBtn"
+    >
+      {{ primaryBtnText }}
+    </button>      
+  </div>
+
+  <div class="btn-wrapper2">
+    <button 
+      class="btn-secondary" 
+      (click)="navigate()"
+    >
+      {{ secondaryBtnText }}
+    </button>    
+  </div>
+</nav>
+
+

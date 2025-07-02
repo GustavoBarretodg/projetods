@@ -1,0 +1,58 @@
+<app-default-conta-layout
+  title="Cadastro de Conta"
+  primaryBtnText="Salvar"
+  (primaryAction)="submit()"
+>
+  <form [formGroup]="contaForm" class="grid-form">
+    <div class="form-row">
+      <label>Morador Responsável</label>
+      <input type="text" formControlName="moradorResponsavel" />
+    </div>
+
+    <div class="form-row">
+      <label>Situação da conta</label>
+      <select formControlName="situacaoConta">
+        <option value="Pendente">Pendente</option>
+        <option value="Paga">Paga</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label>Data Vencimento</label>
+      <input type="date" formControlName="vencimento" />
+    </div>
+
+    <div class="form-row">
+      <label>Valor</label>
+      <input type="number" formControlName="valor" />
+    </div>
+
+    <div class="form-row">
+      <label>Tipo</label>
+      <input type="text" formControlName="tipo" />
+    </div>
+
+    <div class="form-row">
+      <label>Observação</label>
+      <textarea formControlName="observacao"></textarea>
+    </div>
+
+    <!-- Campos Dinâmicos de Moradores -->
+    <div formArrayName="moradores" class="rateio-section">
+      <div
+        *ngFor="let morador of moradores.controls; let i = index"
+        [formGroupName]="i"
+        class="morador-row"
+      >
+        <input type="text" formControlName="nome" placeholder="Morador" />
+        <input type="number" formControlName="valor" placeholder="Valor" />
+        <select formControlName="tipo">
+          <option value="Pago">Pago</option>
+          <option value="Em aberto">Em aberto</option>
+        </select>
+      </div>
+
+      <button type="button" (click)="addMorador()">+</button>
+    </div>
+  </form>
+</app-default-conta-layout>
